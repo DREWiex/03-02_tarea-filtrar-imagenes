@@ -42,36 +42,36 @@ document.addEventListener('DOMContentLoaded', () => {
 
         if(target.matches('#btn1')){ //* botón playa
             const id = target.id; //? ¿quizás utilizar .contains() para capturar y pintar los que compartan la misma propiedad tag, por ej.
-            const data = target.dataset.id;
-            filtrarTag(id, data);
+            const data = target.dataset.id; //* capturo el atributo dataset del botón para poder utilizar el mismo nombre del botón al pintar el mensaje correspondiente
+            pintarTag(id, data); //* le paso los parámetros necesarios tanto para filtrar como para completar el mensaje a pintar de forma dinámica
             pintarFotos(id);
         }
 
         if(target.matches('#btn2')){ //* botón edificio
             const id = target.id;
             const data = target.dataset.id;
-            filtrarTag(id, data);
+            pintarTag(id, data);
             pintarFotos(id);
         }
 
         if(target.matches('#btn3')){ //* botón montaña
             const id = target.id;
             const data = target.dataset.id;
-            filtrarTag(id, data);
+            pintarTag(id, data);
             pintarFotos(id);
         }
 
         if(target.matches('#btn4')){ //* botón señales
             const id = target.id;
             const data = target.dataset.id;
-            filtrarTag(id, data); //! pendiente cambiar el id por data-id (falta pintarlo en pintarBotones()) para imprimir el nombre que corresponda a la etiqueta
+            pintarTag(id, data);
             pintarFotos(id);
         }
 
         if(target.matches('#btnNull')){ //* botón cositas (null)
             const id = target.id;
             const data = target.dataset.id;
-            filtrarTag(id, data);
+            pintarTag(id, data);
             pintarFotos(id);
         }
 
@@ -97,26 +97,32 @@ document.addEventListener('DOMContentLoaded', () => {
     } //!FUNC-PINTARBOTONES
 
 
-
+/*
     const filtrarTag = (id, data) => {
 
         const fotos = arrayFotos.filter((item) => item.id == id);
 
         return console.log(`Se han encontrado ${fotos.length} fotos con la etiqueta ${data}.`);
     }
+*/
 
 
-
-    const pintarTag = (id) => { //! incompleta: no funciona bien
+    const pintarTag = (id, data) => {
 
         capTextoTag.innerHTML = '';
+        capTituloTag.innerHTML = '';
 
-        filtrarTag(id); //! no funciona(?)
+        const fotos = arrayFotos.filter((item) => item.id == id);
 
         const elementP = document.createElement('P');
-        elementP.textContent = `Se han encontrado ${filtrarTag(id)} fotos con la etiqueta ${id}.`
+        elementP.innerHTML = `Se han encontrado <strong>${fotos.length}</strong> fotos con la etiqueta <strong>${data}</strong>.`
+
+        const elementHeader = document.createElement('H4');
+        elementHeader.textContent = data;
+        elementHeader.classList.add('uppercase-text');
 
         capTextoTag.append(elementP);
+        capTituloTag.append(elementHeader);
         
     } //!FUNC-PINTARTAG
 
