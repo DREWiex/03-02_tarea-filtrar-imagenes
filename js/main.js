@@ -82,13 +82,13 @@ document.addEventListener('DOMContentLoaded', () => {
 
     //*** FUNCIONES ***//
 
-    const pintarBotones = () => { //? quizás utilizar un único array para pintar todo
+    const pintarBotones = () => {
 
         arrayBotones.forEach((item) => {
             const botones = document.createElement('BUTTON');
             botones.textContent = item[0];
             botones.id = item[1];
-            botones.setAttribute("data-id", item[0]); //* utilizo el atributo dataset para reutilizar el valor del botón (Playa, Edificio…) y poder capturarlo al hacer click (const data del evento)
+            botones.setAttribute("data-id", item[0]); //* aplico el atributo dataset para utilizar el valor del botón (el nombre asignado a c/u) al capturarlo cuando haga click (const data del evento) y que se muestre el mensaje con el nombre del tag correspondiente
 
             capBotones.append(botones);
 
@@ -96,15 +96,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
     } //!FUNC-PINTARBOTONES
 
-
-/*
-    const filtrarTag = (id, data) => {
-
-        const fotos = arrayFotos.filter((item) => item.id == id);
-
-        return console.log(`Se han encontrado ${fotos.length} fotos con la etiqueta ${data}.`);
-    }
-*/
 
 
     const pintarTag = (id, data) => {
