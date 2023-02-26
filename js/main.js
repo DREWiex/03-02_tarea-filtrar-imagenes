@@ -5,7 +5,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
     //*** VARIABLES ***//
 
-    const fragment = document.createDocumentFragment();
     const urlBase = 'assets/';
 
     //* capturas *//
@@ -131,6 +130,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 elementImg.alt = item.alt;
                 const elementHeader = document.createElement('H5');
                 elementHeader.textContent = item.header;
+                elementHeader.classList.add('grid-item-title');
     
                 capFotos.append(elementImg, elementHeader);
 

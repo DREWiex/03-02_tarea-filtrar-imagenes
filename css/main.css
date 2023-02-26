@@ -34,7 +34,7 @@
 }
 
 .grid-item-title{
-    margin: 0 auto;
+    margin: auto;
 }
 
 .center-text{
@@ -52,6 +52,10 @@ button{
 
 p{
     font-style: italic;
+}
+
+h4{
+    text-decoration: underline;
 }
 
 img{
