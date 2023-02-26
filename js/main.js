@@ -42,31 +42,36 @@ document.addEventListener('DOMContentLoaded', () => {
 
         if(target.matches('#btn1')){ //* botón playa
             const id = target.id; //? ¿quizás utilizar .contains() para capturar y pintar los que compartan la misma propiedad tag, por ej.
-            filtrarTag(id); //! pendiente cambiar el id por data-id (falta pintarlo en pintarBotones()) para imprimir el nombre que corresponda a la etiqueta
+            const data = target.dataset.id;
+            filtrarTag(id, data);
             pintarFotos(id);
         }
 
         if(target.matches('#btn2')){ //* botón edificio
             const id = target.id;
-            filtrarTag(id); //! pendiente cambiar el id por data-id (falta pintarlo en pintarBotones()) para imprimir el nombre que corresponda a la etiqueta
+            const data = target.dataset.id;
+            filtrarTag(id, data);
             pintarFotos(id);
         }
 
         if(target.matches('#btn3')){ //* botón montaña
             const id = target.id;
-            filtrarTag(id); //! pendiente cambiar el id por data-id (falta pintarlo en pintarBotones()) para imprimir el nombre que corresponda a la etiqueta
+            const data = target.dataset.id;
+            filtrarTag(id, data);
             pintarFotos(id);
         }
 
         if(target.matches('#btn4')){ //* botón señales
             const id = target.id;
-            filtrarTag(id); //! pendiente cambiar el id por data-id (falta pintarlo en pintarBotones()) para imprimir el nombre que corresponda a la etiqueta
+            const data = target.dataset.id;
+            filtrarTag(id, data); //! pendiente cambiar el id por data-id (falta pintarlo en pintarBotones()) para imprimir el nombre que corresponda a la etiqueta
             pintarFotos(id);
         }
 
         if(target.matches('#btnNull')){ //* botón cositas (null)
             const id = target.id;
-            filtrarTag(id); //! pendiente cambiar el id por data-id (falta pintarlo en pintarBotones()) para imprimir el nombre que corresponda a la etiqueta
+            const data = target.dataset.id;
+            filtrarTag(id, data);
             pintarFotos(id);
         }
 
@@ -77,13 +82,13 @@ document.addEventListener('DOMContentLoaded', () => {
 
     //*** FUNCIONES ***//
 
-    const pintarBotones = () => { //! quizás utilizar un único array para pintar todo
+    const pintarBotones = () => { //? quizás utilizar un único array para pintar todo
 
         arrayBotones.forEach((item) => {
             const botones = document.createElement('BUTTON');
             botones.textContent = item[0];
             botones.id = item[1];
-            //botones.setAttribute("data-id", item[0]); //! pendiente hacer
+            botones.setAttribute("data-id", item[0]); //* utilizo el atributo dataset para reutilizar el valor del botón (Playa, Edificio…) y poder capturarlo al hacer click (const data del evento)
 
             capBotones.append(botones);
 
@@ -93,11 +98,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
 
-    const filtrarTag = (id) => {
+    const filtrarTag = (id, data) => {
 
         const fotos = arrayFotos.filter((item) => item.id == id);
 
-        return console.log(`Se han encontrado ${fotos.length} fotos con la etiqueta ${id}.`); //! pendiente modificar el mensaje para cuando se vaya a pintar 
+        return console.log(`Se han encontrado ${fotos.length} fotos con la etiqueta ${data}.`);
     }
 
 
