@@ -1,1 +1,1 @@
-# practica-filtro_24-02
+# Tarea: filtrar imágenes
